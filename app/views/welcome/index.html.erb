@@ -1,0 +1,24 @@
+<div class="container">
+
+  <section class="text-center" style="line-height: 1">
+    <h2>Bitstine Applogic</h2>
+  </section>
+
+  <div class="row justify-content-center" id="getstart">
+    <div class="col-8 text-center">
+      <% if current_user %>
+          <a class="btn btn-primary btn-lg btn-block" href="<%= signout_path %>" role="button">
+            <small><%= t('header.sign_out') %></small>
+          </a>
+      <% else %>
+          <% # Output button for enabled OAuth2 provider. %>
+          <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
+          <% if provider.present? %>
+            <a class="btn btn-primary btn-lg btn-block" href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>" role="button">
+              <small>Sign in</small>
+            </a>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

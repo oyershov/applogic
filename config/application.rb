@@ -32,8 +32,14 @@ module Applogic
 
     config.api_only = true
 
-    # Add app/api to paths, autoload paths
-    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    %w[api abilities].each do |dir|
+      config.paths.add File.join('app', dir), glob: File.join('**', '*.rb')
+      config.autoload_paths += Dir[Rails.root.join('app', dir, '*')]
+    end
+
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use Rack::MethodOverride
   end
 end

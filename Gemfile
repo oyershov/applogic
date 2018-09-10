@@ -13,6 +13,9 @@ gem 'jwt-multisig',                     '~> 1.0'
 gem 'memoist',                          '~> 0.16'
 gem 'mini_racer',                       '~> 0.1', require: false
 gem 'mysql2',                           '>= 0.3.18', '< 0.5'
+gem 'oauth2',                           '~> 1.4', github: 'oauth-xx/oauth2'
+gem 'omniauth',                         '~> 1.8'
+gem 'omniauth-barong',                  '~> 0.1', require: false
 gem 'puma',                             '~> 3.7'
 gem 'rails',                            '~> 5.2'
 gem 'sass-rails',                       '~> 5.0'

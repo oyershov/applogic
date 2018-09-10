@@ -17,7 +17,7 @@ module APIv1
       end
 
       def request
-        @request ||= Grape::Request.new(env)
+        @request ||= Grape::Request.new(env).tap { |r| r.session_options[:skip] = true }
       end
 
       def params

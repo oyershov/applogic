@@ -8,12 +8,16 @@ module APIv1
 
     helpers APIv1::Helpers
 
+    include APIv1::ExceptionHandlers
+
     use APIv1::CORS::Middleware
     use APIv1::Auth::Middleware
 
     mount APIv1::Withdraw
     mount APIv1::Deposit
     mount APIv1::Beneficiaries
+    mount APIv1::Users
+    mount APIv1::CreateUser
 
     add_swagger_documentation base_path: BaseAPI::PREFIX,
                               mount_path: '/swagger',

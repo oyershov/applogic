@@ -5,6 +5,8 @@ module APIv1
     def self.included(base)
       base.instance_eval do
         rescue_from Grape::Exceptions::ValidationErrors do |e|
+          BaseAPI.logger.error(e.inspect)
+          BaseAPI.logger.error("Params are not valid: #{e.message}")
           error!({ error: { code: 1001, message: e.message } }, 422)
         end
       end
